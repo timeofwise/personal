@@ -28,7 +28,7 @@
                 {% if startDate != 'None' %}
                     <div class="alert alert-primary my-4">
                         <p>{{startDate}} 부터 {{endDateForList}} 까지의 원금자산(입금내역) 입니다.</p>
-                        <p><span style="float:right;font-size:1.2em;font-weight:700">{{total_deposit_sum|intcomma}}원</span></p>
+                        <p><span style="font-size:1.2em;font-weight:700">{{total_deposit_sum|intcomma}}원</span></p>
                     </div>
                 {% endif %}
             </form>
