@@ -46,18 +46,7 @@ def home(request):
     today_month = datetime.datetime.today().month
     today_day = datetime.datetime.today().day
 
-    asset_1 = asset.objects.filter(asset_account_id=1)  # 삼성증권
-    list_asset_1 ={}
-    list_asset_1_temp=[-1]
-    for d in date_list:
-        for a in asset_1:
-            if d.strftime("%Y-%m-%d") == a.created.strftime("%Y-%m-%d"):
-                list_asset_1[d.strftime("%Y-%m-%d")] = a.current_amount
-                list_asset_1_temp = []
-                list_asset_1_temp.append(a.current_amount)
-            else:
-                list_asset_1[d.strftime("%Y-%m-%d")] = list_asset_1_temp[0]
-    print(list_asset_1[today.strftime("%Y-%m-%d")])
+
 
 
     i=0
@@ -130,7 +119,6 @@ def home(request):
         "deposit_3_sum": deposit_4_sum,
         "data":data,
         "today":todatStr,
-        "asset_0_today":list_asset_1[today.strftime("%Y-%m-%d")],
         "total_deposit_sum":total_deposit_sum,
         "total_asset_sum":total_asset_sum,
         "income_rate":income_rate,
