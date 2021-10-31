@@ -1,6 +1,8 @@
 from django.shortcuts import render
+import pandas as pd
 from .models import *
 import datetime
+from datetime import timedelta
 
 # Create your views here.
 def home(request):
@@ -14,6 +16,7 @@ def home(request):
     if request.method == "POST":
         startDate = request.POST['startDate']
         endDate = request.POST['endDate']
+        date_list = pd.date_range(start=startDate, end=endDate)
         deposit_1 = deposit.objects.filter(deposit_account_id=1).filter(created__range=[startDate, endDate])  #삼성증권
         deposit_2 = deposit.objects.filter(deposit_account_id=2).filter(created__range=[startDate, endDate])  # 국민은행 인덱스펀드
         deposit_3 = deposit.objects.filter(deposit_account_id=3).filter(created__range=[startDate, endDate])  # KB증권 미국주식 메인
@@ -22,6 +25,7 @@ def home(request):
     else:
         startDate = "None"
         endDate = "None"
+        date_list = pd.date_range(start="2020-07-27", end=datetime.date.today())
         deposit_1 = deposit.objects.filter(deposit_account_id=1)  # 삼성증권
         deposit_2 = deposit.objects.filter(deposit_account_id=2)  # 국민은행 인덱스펀드
         deposit_3 = deposit.objects.filter(deposit_account_id=3)  # KB증권 미국주식 메인
@@ -36,7 +40,23 @@ def home(request):
     for d in deposit_4:
         deposit_4_sum += d.inAndOut
 
+    today = datetime.datetime.today()
+    today_year = datetime.datetime.today().year
+    today_month = datetime.datetime.today().month
+    today_day = datetime.datetime.today().day
+
     asset_1 = asset.objects.filter(asset_account_id=1)  # 삼성증권
+    list_asset_1 ={}
+    list_asset_1_temp=[-1]
+    for d in date_list:
+        for a in asset_1:
+            if d.strftime("%Y-%m-%d") == a.created.strftime("%Y-%m-%d"):
+                list_asset_1[d.strftime("%Y-%m-%d")] = a.current_amount
+                list_asset_1_temp = []
+                list_asset_1_temp.append(a.current_amount)
+            else:
+                list_asset_1[d.strftime("%Y-%m-%d")] = list_asset_1_temp[0]
+    print(list_asset_1[today.strftime("%Y-%m-%d")])
 
 
     i=0
@@ -75,6 +95,7 @@ def home(request):
         "deposit_2_sum": deposit_3_sum,
         "deposit_3_sum": deposit_4_sum,
         "data":data,
+        "asset_0_today":list_asset_1[today.strftime("%Y-%m-%d")],
    }
 
     return render(request, template, context)
