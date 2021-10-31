@@ -9,7 +9,8 @@ class accountAdmin(admin.ModelAdmin):
 admin.site.register(account, accountAdmin)
 
 class depositAdmin(admin.ModelAdmin):
-    list_display = ['id', 'index', 'amount']
+    list_display = ['id', 'index', 'amount', 'created']
+    list_editable = ['created']
 
 admin.site.register(deposit, depositAdmin)
 
