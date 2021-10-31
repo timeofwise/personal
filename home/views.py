@@ -83,7 +83,7 @@ def home(request):
                     else:
                         dict_asset[d.strftime("%Y-%m-%d")] = list_asset_temp[0]
             dummy.append(dict_asset)
-            dummy.append(dict_asset[today.strftime("%Y-%m-%d")])
+            #dummy.append(dict_asset[today.strftime("%Y-%m-%d")])
 
         else:
             savings = deposit.objects.filter(deposit_account_id=i)
@@ -102,7 +102,7 @@ def home(request):
                     else:
                         dict_asset[d.strftime("%Y-%m-%d")] = list_asset_temp[0]
             dummy.append(dict_asset)
-            dummy.append(dict_asset[today.strftime("%Y-%m-%d")])
+            #dummy.append(dict_asset[today.strftime("%Y-%m-%d")])
         data.append(dummy)
 
 
