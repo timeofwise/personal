@@ -25,7 +25,7 @@ def home(request):
 
     else:
         startDate = "None"
-        endDate = "None"
+        endDate = datetime.datetime.today()
         date_list = pd.date_range(start="2020-07-27", end=datetime.date.today())
         deposit_1 = deposit.objects.filter(deposit_account_id=1)  # 삼성증권
         deposit_2 = deposit.objects.filter(deposit_account_id=2)  # 국민은행 인덱스펀드
