@@ -36,6 +36,9 @@ def home(request):
     for d in deposit_4:
         deposit_4_sum += d.inAndOut
 
+    asset_1 = asset.objects.filter(deposit_account_id=1)  # 삼성증권
+    
+
     i=0
     for a in accounts:
         dummy=[]
