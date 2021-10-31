@@ -124,7 +124,6 @@ def home(request):
         "total_deposit_sum":total_deposit_sum,
         "total_asset_sum":total_asset_sum,
         "income_rate":income_rate,
-        "deposit_1":deposit_1,
    }
 
     return render(request, template, context)
