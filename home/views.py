@@ -6,8 +6,7 @@ import datetime
 def home(request):
     template = "home/main.html"
     accounts = account.objects.all()
-    deposit_1 = deposit.objects.filter(deposit_account_id=1).filter(created__range=["2020-07-01", "2020-07-31"])
-    ) #삼성증권
+    deposit_1 = deposit.objects.filter(deposit_account_id=1).filter(created__range=["2020-07-01", "2020-07-31"])  #삼성증권
     deposit_2 = deposit.objects.filter(deposit_account_id=2)  # 국민은행 인덱스펀드
     deposit_3 = deposit.objects.filter(deposit_account_id=3)  # KB증권 미국주식 메인
     deposit_4 = deposit.objects.filter(deposit_account_id=4)  # 신한금투 미국주식 서브
