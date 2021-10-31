@@ -10,23 +10,39 @@ def home(request):
         startDate = request.POST['startDate']
         endDate = request.POST['endDate']
         deposit_1 = deposit.objects.filter(deposit_account_id=1).filter(created__range=[startDate, endDate])  #삼성증권
+        deposit_2 = deposit.objects.filter(deposit_account_id=2).filter(created__range=[startDate, endDate])  # 국민은행 인덱스펀드
+        deposit_3 = deposit.objects.filter(deposit_account_id=3).filter(created__range=[startDate, endDate])  # KB증권 미국주식 메인
+        deposit_4 = deposit.objects.filter(deposit_account_id=4).filter(created__range=[startDate, endDate])  # 신한금투 미국주식 서브
+
     else:
-        deposit_1 = deposit.objects.all()  # 삼성증권
+        deposit_1 = deposit.objects.filter(deposit_account_id=1)  # 삼성증권
+        deposit_2 = deposit.objects.filter(deposit_account_id=2)  # 국민은행 인덱스펀드
+        deposit_3 = deposit.objects.filter(deposit_account_id=3)  # KB증권 미국주식 메인
+        deposit_4 = deposit.objects.filter(deposit_account_id=4)  # 신한금투 미국주식 서브
     deposit_1_sum = 0
+    deposit_2_sum = 0
+    deposit_3_sum = 0
+    deposit_4_sum = 0
     for d in deposit_1:
         deposit_1_sum += d.amount
-    deposit_2 = deposit.objects.filter(deposit_account_id=2)  # 국민은행 인덱스펀드
-    deposit_3 = deposit.objects.filter(deposit_account_id=3)  # KB증권 미국주식 메인
-    deposit_4 = deposit.objects.filter(deposit_account_id=4)  # 신한금투 미국주식 서브
+    for d in deposit_2:
+        deposit_2_sum += d.amount
+    for d in deposit_3:
+        deposit_3_sum += d.amount
+    for d in deposit_4:
+        deposit_4_sum += d.amount
 
 
     context = {
         "accounts":accounts,
         "deposit_0":deposit_1,
-        "deposit_0_sum":deposit_1_sum,
         "deposit_1":deposit_2,
         "deposit_2":deposit_3,
         "deposit_3":deposit_4,
+        "deposit_0_sum": deposit_1_sum,
+        "deposit_1_sum": deposit_2_sum,
+        "deposit_2_sum": deposit_3_sum,
+        "deposit_3_sum": deposit_4_sum,
    }
 
     return render(request, template, context)

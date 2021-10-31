@@ -35,11 +35,11 @@
                     </div>
                 </div>
             </div>
+            {{deposit_0_sum|intcomma}}
+            <hr>
             {% for d in deposit_0 %}
                 {{d.amount|intcomma}} <span class="badge bg-secondary">{{d.created|date:'Y-m-d'}}</span><br>
             {% endfor %}
-            <hr>
-            {{deposit_0_sum|intcomma}}
         </div>
         <div class="col-3">
             <div class="card mb-3" style="max-width: 540px;">
@@ -55,6 +55,8 @@
                     </div>
                 </div>
             </div>
+            {{deposit_1_sum|intcomma}}
+            <hr>
             {% for d in deposit_1 %}
                 {{d.amount}} // {{d.created}}<br>
             {% endfor %}
@@ -73,6 +75,8 @@
                     </div>
                 </div>
             </div>
+            {{deposit_2_sum|intcomma}}
+            <hr>
             {% for d in deposit_2 %}
                 {{d.amount}} // {{d.created}}<br>
             {% endfor %}
@@ -91,6 +95,8 @@
                     </div>
                 </div>
             </div>
+            {{deposit_3_sum|intcomma}}
+            <hr>
             {% for d in deposit_3 %}
                 {{d.amount}} // {{d.created}}<br>
             {% endfor %}
