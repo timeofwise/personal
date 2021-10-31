@@ -24,16 +24,55 @@
             {% endfor %}
         </div>
         <div class="col-3">
+            <div class="card mb-3" style="max-width: 540px;">
+                <div class="row g-0">
+                    <div class="col-md-3">
+                        <img src="{{accounts.1.account_img.url}}" class="img-fluid rounded-start" alt="...">
+                    </div>
+                    <div class="col-md-9">
+                        <div class="card-body">
+                            <h5 class="card-title">{{accounts.1.account_name}}</h5>
+                            <p class="card-text">{{accounts.1.description}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
             {% for d in deposit_1 %}
                 {{d.amount}} // {{d.created}}<br>
             {% endfor %}
         </div>
         <div class="col-3">
+            <div class="card mb-3" style="max-width: 540px;">
+                <div class="row g-0">
+                    <div class="col-md-3">
+                        <img src="{{accounts.2.account_img.url}}" class="img-fluid rounded-start" alt="...">
+                    </div>
+                    <div class="col-md-9">
+                        <div class="card-body">
+                            <h5 class="card-title">{{accounts.2.account_name}}</h5>
+                            <p class="card-text">{{accounts.2.description}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
             {% for d in deposit_2 %}
                 {{d.amount}} // {{d.created}}<br>
             {% endfor %}
         </div>
         <div class="col-3">
+            <div class="card mb-3" style="max-width: 540px;">
+                <div class="row g-0">
+                    <div class="col-md-3">
+                        <img src="{{accounts.3.account_img.url}}" class="img-fluid rounded-start" alt="...">
+                    </div>
+                    <div class="col-md-9">
+                        <div class="card-body">
+                            <h5 class="card-title">{{accounts.3.account_name}}</h5>
+                            <p class="card-text">{{accounts.3.description}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
             {% for d in deposit_3 %}
                 {{d.amount}} // {{d.created}}<br>
             {% endfor %}
