@@ -19,7 +19,7 @@ def home(request):
         endDateForList = request.POST['endDate']
         #date_list = pd.date_range(start=startDate, end=endDateForList)
         date_list = pd.date_range(start="2020-07-27", end=datetime.date.today())
-        deposit_1 = deposit.objects.filter(deposit_account_id=1).get(created="2021-10-12")  #삼성증권
+        deposit_1 = deposit.objects.filter(deposit_account_id=1).filter(created__range=[startDate, endDate])   #삼성증권
         deposit_2 = deposit.objects.filter(deposit_account_id=2).filter(created__range=[startDate, endDate])  # 국민은행 인덱스펀드
         deposit_3 = deposit.objects.filter(deposit_account_id=3).filter(created__range=[startDate, endDate])  # KB증권 미국주식 메인
         deposit_4 = deposit.objects.filter(deposit_account_id=4).filter(created__range=[startDate, endDate])  # 신한금투 미국주식 서브
@@ -30,7 +30,7 @@ def home(request):
         endDateForList = "None"
         #date_list = pd.date_range(start=startDate, end=endDateForList)
         date_list = pd.date_range(start="2020-07-27", end=datetime.date.today())
-        deposit_1 = deposit.objects.filter(deposit_account_id=1).get(created="2021-10-12")  # 삼성증권
+        deposit_1 = deposit.objects.filter(deposit_account_id=1)  # 삼성증권
         deposit_2 = deposit.objects.filter(deposit_account_id=2)  # 국민은행 인덱스펀드
         deposit_3 = deposit.objects.filter(deposit_account_id=3)  # KB증권 미국주식 메인
         deposit_4 = deposit.objects.filter(deposit_account_id=4)  # 신한금투 미국주식 서브
