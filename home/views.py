@@ -67,8 +67,8 @@ def home(request):
         i+=1
         dummy.append(a)
         if request.method == "POST":
-            savings = deposit.objects.filter(deposit_account_ordering_level=i).filter(created__range=[startDate, endDate])
-            assets = asset.objects.filter(asset_account_ordering_level=i).filter(created__range=[startDate, endDate])
+            savings = deposit.objects.filter(deposit_account__ordering_level=i).filter(created__range=[startDate, endDate])
+            assets = asset.objects.filter(asset_account__ordering_level=i).filter(created__range=[startDate, endDate])
             dummy.append(savings)
             deposit_sum = 0
             for d in savings:
@@ -86,8 +86,8 @@ def home(request):
             dummy.append(dict_asset[today.strftime("%Y-%m-%d")])
 
         else:
-            savings = deposit.objects.filter(deposit_account_ordering_level=i)
-            assets = asset.objects.filter(asset_account_ordering_level=i)
+            savings = deposit.objects.filter(deposit_account__ordering_level=i)
+            assets = asset.objects.filter(asset_account__ordering_level=i)
             dummy.append(savings)
             deposit_sum = 0
             for d in savings:
