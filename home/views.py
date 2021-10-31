@@ -16,7 +16,7 @@ def home(request):
     if request.method == "POST":
         startDate = request.POST['startDate']
         endDate = (datetime.datetime.strptime(request.POST['endDate'], '%Y-%m-%d') + timedelta(days=1)).strftime("%Y-%m-%d")
-        endDateForList = request.POST['endDate']
+        endDateForList = datetime.datetime.strptime(request.POST['endDate'], '%Y-%m-%d')
         #date_list = pd.date_range(start=startDate, end=endDateForList)
         date_list = pd.date_range(start="2020-07-27", end=datetime.date.today())
         deposit_1 = deposit.objects.filter(deposit_account_id=1).filter(created__range=[startDate, endDate])  #삼성증권
