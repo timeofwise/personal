@@ -72,7 +72,22 @@
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                ...
+                                    <table class="table table-sm table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>날짜</th>
+                                                <th>금액</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for s in d.1 %}
+                                                <tr>
+                                                    <td><span class="badge bg-secondary">{{s.created|date:'Y-m-d'}}</span></td>
+                                                    <td>{{s.amount|intcomma}}</td>
+                                                </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
