@@ -76,8 +76,8 @@ def home(request):
                     else:
                         dict_asset[d.strftime("%Y-%m-%d")] = list_asset_temp[0]
             dummy.append(dict_asset)
-            dummy.append(dict_asset[today.strftime("%Y-%m-%d")])
-            total_asset_sum += dict_asset[today.strftime("%Y-%m-%d")]
+            dummy.append(dict_asset[endDate])
+            total_asset_sum += dict_asset[endDate]
 
         else:
             savings = deposit.objects.filter(deposit_account__ordering_level=i)
