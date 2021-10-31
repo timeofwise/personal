@@ -27,7 +27,8 @@ def home(request):
         startDate = "None"
         endDate = "None"
         endDateForList = "None"
-        date_list = pd.date_range(start="2020-07-27", end=datetime.date.today())
+        date_list = pd.date_range(start=startDate, end=endDateForList)
+        #date_list = pd.date_range(start="2020-07-27", end=datetime.date.today())
         deposit_1 = deposit.objects.filter(deposit_account_id=1)  # 삼성증권
         deposit_2 = deposit.objects.filter(deposit_account_id=2)  # 국민은행 인덱스펀드
         deposit_3 = deposit.objects.filter(deposit_account_id=3)  # KB증권 미국주식 메인
@@ -79,8 +80,8 @@ def home(request):
                         dict_asset[d.strftime("%Y-%m-%d")] = list_asset_temp[0]
             dummy.append(dict_asset)
             print(dict_asset)
-            #dummy.append(dict_asset['2021-10-15'])
-            #total_asset_sum += dict_asset['2021-10-15']
+            dummy.append(endDateForList)
+            total_asset_sum += dict_asset[endDateForList]
 
         else:
             savings = deposit.objects.filter(deposit_account__ordering_level=i)
