@@ -75,9 +75,22 @@
             </div>
             {{deposit_1_sum|intcomma}}
             <hr>
-            {% for d in deposit_1 %}
-                {{d.amount}} <span class="badge bg-secondary">{{d.created|date:'Y-m-d'}}</span><br>
-            {% endfor %}
+            <table class="table table-sm table-hover">
+                <thead>
+                    <tr>
+                        <th>날짜</th>
+                        <th>금액</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for d in deposit_1 %}
+                        <tr>
+                            <td><span class="badge bg-secondary">{{d.created|date:'Y-m-d'}}</span></td>
+                            <td><span style="float:right">{{d.amount|intcomma}}</span></td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
         </div>
         <div class="col-3">
             <div class="card mb-3" style="max-width: 540px;">
