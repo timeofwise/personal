@@ -67,7 +67,7 @@
                     {% for d in deposit_0 %}
                         <tr>
                             <td><span class="badge bg-secondary">{{d.created|date:'Y-m-d'}}</span></td>
-                            <td><span style="float:right">{{d.amount|intcomma}}</span></td>
+                            <td><span style="float:right">{{d.inAndOut|intcomma}}</span></td>
                         </tr>
                     {% endfor %}
                 </tbody>
@@ -108,7 +108,7 @@
                     {% for d in deposit_1 %}
                         <tr>
                             <td><span class="badge bg-secondary">{{d.created|date:'Y-m-d'}}</span></td>
-                            <td><span style="float:right">{{d.amount|intcomma}}</span></td>
+                            <td><span style="float:right">{{d.inAndOut|intcomma}}</span></td>
                         </tr>
                     {% endfor %}
                 </tbody>
@@ -149,7 +149,7 @@
                     {% for d in deposit_2 %}
                         <tr>
                             <td><span class="badge bg-secondary">{{d.created|date:'Y-m-d'}}</span></td>
-                            <td><span style="float:right">{{d.amount|intcomma}}</span></td>
+                            <td><span style="float:right">{{d.inAndOut|intcomma}}</span></td>
                         </tr>
                     {% endfor %}
                 </tbody>
@@ -190,7 +190,7 @@
                     {% for d in deposit_3 %}
                         <tr>
                             <td><span class="badge bg-secondary">{{d.created|date:'Y-m-d'}}</span></td>
-                            <td><span style="float:right">{{d.amount|intcomma}}</span></td>
+                            <td><span style="float:right">{{d.inAndOut|intcomma}}</span></td>
                         </tr>
                     {% endfor %}
                 </tbody>
