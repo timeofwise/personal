@@ -87,6 +87,14 @@
                                     <span style="float:right;font-weight:600">{{d.4|intcomma}}</span>
                                 </td>
                             </tr>
+                            <tr>
+                                <td>
+                                    <span style="font-size:0.8em">손익</span>
+                                </td>
+                                <td>
+                                    <span style="float:right;font-weight:600">{{d.2|sub:d.4|intcomma}}</span>
+                                </td>
+                            </tr>
                         </table>
                     </div>
                     <!-- Modal -->
@@ -113,7 +121,6 @@
                                             {% endfor %}
                                         </tbody>
                                     </table>
-                                    {{d.3}}
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary rounded-pill" data-bs-dismiss="modal">닫기</button>
