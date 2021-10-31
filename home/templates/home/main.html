@@ -19,7 +19,7 @@
                 </div>
                 <input class="btn btn-primary" type="submit" value="검색">
                 {% if startDate != 'None' %}
-                    <div class="alert alert-primary">
+                    <div class="alert alert-primary my-4">
                         <p>{{startDate}} 부터 {{endDate}} 까지의 원금자산(입금내역) 입니다.</p>
                     </div>
                 {% endif %}
@@ -63,7 +63,7 @@
             {{deposit_1_sum|intcomma}}
             <hr>
             {% for d in deposit_1 %}
-                {{d.amount}} // {{d.created}}<br>
+                {{d.amount}} // <span class="badge bg-secondary">{{d.created|date:'Y-m-d'}}</span><br>
             {% endfor %}
         </div>
         <div class="col-3">
@@ -83,7 +83,7 @@
             {{deposit_2_sum|intcomma}}
             <hr>
             {% for d in deposit_2 %}
-                {{d.amount}} // {{d.created}}<br>
+                {{d.amount}} // <span class="badge bg-secondary">{{d.created|date:'Y-m-d'}}</span><br>
             {% endfor %}
         </div>
         <div class="col-3">
@@ -103,7 +103,7 @@
             {{deposit_3_sum|intcomma}}
             <hr>
             {% for d in deposit_3 %}
-                {{d.amount}} // {{d.created}}<br>
+                {{d.amount}} // <span class="badge bg-secondary">{{d.created|date:'Y-m-d'}}</span><br>
             {% endfor %}
         </div>
     </div>
