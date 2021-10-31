@@ -6,6 +6,11 @@ import datetime
 def home(request):
     template = "home/main.html"
     accounts = account.objects.all()
+    deposit_1_sum = 0
+    deposit_2_sum = 0
+    deposit_3_sum = 0
+    deposit_4_sum = 0
+    data=[]
     if request.method == "POST":
         startDate = request.POST['startDate']
         endDate = request.POST['endDate']
@@ -21,10 +26,7 @@ def home(request):
         deposit_2 = deposit.objects.filter(deposit_account_id=2)  # 국민은행 인덱스펀드
         deposit_3 = deposit.objects.filter(deposit_account_id=3)  # KB증권 미국주식 메인
         deposit_4 = deposit.objects.filter(deposit_account_id=4)  # 신한금투 미국주식 서브
-    deposit_1_sum = 0
-    deposit_2_sum = 0
-    deposit_3_sum = 0
-    deposit_4_sum = 0
+
     for d in deposit_1:
         deposit_1_sum += d.inAndOut
     for d in deposit_2:
@@ -33,6 +35,28 @@ def home(request):
         deposit_3_sum += d.inAndOut
     for d in deposit_4:
         deposit_4_sum += d.inAndOut
+
+    i=0
+    for a in accounts:
+        dummy=[]
+        i+=1
+        dummy.append(a)
+        if request.method == "POST":
+            savings = deposit.objects.filter(deposit_account_id=i).filter(created__range=[startDate, endDate])
+            dummy.append(savings)
+            deposit_sum = 0
+            for d in savings:
+                deposit_sum += d.inAndOut
+            dummy.append(deposit_sum)
+        else:
+            savings = deposit.objects.filter(deposit_account_id=i)
+            dummy.append(savings)
+            deposit_sum = 0
+            for d in savings:
+                deposit_sum += d.inAndOut
+            dummy.append(deposit_sum)
+        data.append(dummy)
+
 
 
     context = {
@@ -47,6 +71,7 @@ def home(request):
         "deposit_1_sum": deposit_2_sum,
         "deposit_2_sum": deposit_3_sum,
         "deposit_3_sum": deposit_4_sum,
+        "data":data,
    }
 
     return render(request, template, context)
