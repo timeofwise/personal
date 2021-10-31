@@ -59,7 +59,7 @@ def home(request):
     for a in accounts:
         dummy=[]
         list_asset_temp = [-1]
-        dict_asset = {}
+
         i+=1
         dummy.append(a)
         if request.method == "POST":
@@ -67,6 +67,7 @@ def home(request):
             assets = asset.objects.filter(asset_account__ordering_level=i).filter(created__range=[startDate, endDate])
             dummy.append(savings)
             deposit_sum = 0
+            dict_asset = {}
             for d in savings:
                 deposit_sum += d.inAndOut
                 total_deposit_sum += d.inAndOut
@@ -89,6 +90,7 @@ def home(request):
             assets = asset.objects.filter(asset_account__ordering_level=i)
             dummy.append(savings)
             deposit_sum = 0
+            dict_asset = {}
             for d in savings:
                 deposit_sum += d.inAndOut
                 total_deposit_sum += d.inAndOut
