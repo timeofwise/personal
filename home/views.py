@@ -61,6 +61,7 @@ def home(request):
 
 
     i=0
+    total_deposit_sum = 0
     for a in accounts:
         dummy=[]
         list_asset_temp = [-1]
@@ -74,6 +75,7 @@ def home(request):
             deposit_sum = 0
             for d in savings:
                 deposit_sum += d.inAndOut
+                total_deposit_sum += d.inAndOut
             dummy.append(deposit_sum)
             for d in date_list:
                 for a in assets:
@@ -93,6 +95,7 @@ def home(request):
             deposit_sum = 0
             for d in savings:
                 deposit_sum += d.inAndOut
+                total_deposit_sum += d.inAndOut
             dummy.append(deposit_sum)
             for d in date_list:
                 for a in assets:
@@ -106,9 +109,6 @@ def home(request):
             dummy.append(dict_asset[today.strftime("%Y-%m-%d")])
         data.append(dummy)
 
-    total_deposit_sum=0
-    for t in data:
-        total_deposit_sum += t[1]
 
 
     context = {
