@@ -5,6 +5,8 @@
 {% block content %}
 <div class="container">
     {{accounts}}<br>
-    {{deposit_1}}
+    {% for d in deposit_1 %}
+    {{d.amount}} // {{d.created}}<br>
+    {% endfor %}
 </div>
 {% endblock %}
