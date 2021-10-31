@@ -13,7 +13,7 @@ def home(request):
 
 
     context = {
-        "accounts":len_accounts,
+        "accounts":accounts,
         "deposit_1":deposit_1,
         "deposit_2":deposit_2,
         "deposit_3":deposit_3,
