@@ -18,6 +18,11 @@
                     <input type="text" class="form-control" id="endDate" name="endDate">
                 </div>
                 <input class="btn btn-primary" type="submit" value="검색">
+                {% if startDate != 'None' %}
+                    <div class="alert alert-primary">
+                        <p>{{startDate}} 부터 {{endDate}} 까지의 원금자산(입금내역) 입니다.</p>
+                    </div>
+                {% endif %}
             </form>
             <hr>
         </div>

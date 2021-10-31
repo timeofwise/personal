@@ -35,6 +35,8 @@ def home(request):
 
     context = {
         "accounts":accounts,
+        "startDate":startDate,
+        "endDate":endDate,
         "deposit_0":deposit_1,
         "deposit_1":deposit_2,
         "deposit_2":deposit_3,
