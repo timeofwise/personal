@@ -63,6 +63,7 @@ def home(request):
     for a in accounts:
         dummy=[]
         list_asset_temp = [-1]
+        dict_asset = {}
         i+=1
         dummy.append(a)
         if request.method == "POST":
@@ -73,7 +74,6 @@ def home(request):
             for d in savings:
                 deposit_sum += d.inAndOut
             dummy.append(deposit_sum)
-            dict_asset = {}
             for d in date_list:
                 for a in assets:
                     if d.strftime("%Y-%m-%d") == a.created.strftime("%Y-%m-%d"):
