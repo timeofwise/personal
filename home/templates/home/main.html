@@ -21,7 +21,7 @@
                 </div>
             </div>
             {% for d in deposit_0 %}
-                {{d.amount|intcomma}} // {{d.created|date:'Y-m-d'}}<br>
+                {{d.amount|intcomma}} <span class="badge bg-secondary">{{d.created|date:'Y-m-d'}}</span><br>
             {% endfor %}
         </div>
         <div class="col-3">
