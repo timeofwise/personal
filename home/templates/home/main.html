@@ -59,22 +59,7 @@
                                 </td>
                             </tr>
                         </table>
-                        <table class="table table-sm table-hover">
-                            <thead>
-                                <tr>
-                                    <th>날짜</th>
-                                    <th>금액</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {% for s in d.1 %}
-                                    <tr>
-                                        <td><span class="badge bg-secondary">{{s.created|date:'Y-m-d'}}</span></td>
-                                        <td><span style="float:right">{{s.inAndOut|intcomma}}</span></td>
-                                    </tr>
-                                {% endfor %}
-                            </tbody>
-                        </table>
+                        <button id="data_{{d.forloop}}" class="btn btn-info">자세히</button>
                     </div>
                 {% endfor %}
             </div>
