@@ -26,13 +26,13 @@ def home(request):
     deposit_3_sum = 0
     deposit_4_sum = 0
     for d in deposit_1:
-        deposit_1_sum += d.amount
+        deposit_1_sum += d.inAndOut
     for d in deposit_2:
-        deposit_2_sum += d.amount
+        deposit_2_sum += d.inAndOut
     for d in deposit_3:
-        deposit_3_sum += d.amount
+        deposit_3_sum += d.inAndOut
     for d in deposit_4:
-        deposit_4_sum += d.amount
+        deposit_4_sum += d.inAndOut
 
 
     context = {

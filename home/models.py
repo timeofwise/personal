@@ -17,6 +17,14 @@ class deposit(models.Model):
 
     created = models.DateTimeField(null=True)
 
+    @property
+    def inAndOut(self):
+        if index == "입금":
+            return self.amount
+        elif index == "출금":
+            return self.amount * (-1)
+        return self.amount
+
     class Meta:
         ordering = ['-created']
 
