@@ -62,6 +62,7 @@ def home(request):
 
     i=0
     total_deposit_sum = 0
+    total_asset_sum = 0
     for a in accounts:
         dummy=[]
         list_asset_temp = [-1]
@@ -87,6 +88,7 @@ def home(request):
                         dict_asset[d.strftime("%Y-%m-%d")] = list_asset_temp[0]
             dummy.append(dict_asset)
             dummy.append(dict_asset[today.strftime("%Y-%m-%d")])
+            total_asset_sum += dict_asset[today.strftime("%Y-%m-%d")]
 
         else:
             savings = deposit.objects.filter(deposit_account__ordering_level=i)
@@ -107,6 +109,7 @@ def home(request):
                         dict_asset[d.strftime("%Y-%m-%d")] = list_asset_temp[0]
             dummy.append(dict_asset)
             dummy.append(dict_asset[today.strftime("%Y-%m-%d")])
+            total_asset_sum += dict_asset[today.strftime("%Y-%m-%d")]
         data.append(dummy)
 
 
@@ -127,6 +130,7 @@ def home(request):
         "today":todatStr,
         "asset_0_today":list_asset_1[today.strftime("%Y-%m-%d")],
         "total_deposit_sum":total_deposit_sum,
+        "total_asset_sum":total_asset_sum,
    }
 
     return render(request, template, context)
