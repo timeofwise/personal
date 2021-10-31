@@ -52,14 +52,14 @@
                         <table class="table table-sm">
                             <tr>
                                 <td>
-                                   원금자산 합계
+                                    <span>원금자산 합계</span>
+                                    <button id="data_{{forloop.counter}}" class="btn btn-sm btn-info rounded rounded-pill">자세히</button>
                                 </td>
                                 <td>
                                     <span style="float:right">{{d.2|intcomma}}</span>
                                 </td>
                             </tr>
                         </table>
-                        <button id="data_{{forloop.counter}}" class="btn btn-sm btn-info rounded rounded-pill">자세히</button>
                     </div>
                 {% endfor %}
             </div>
