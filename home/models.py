@@ -19,9 +19,9 @@ class deposit(models.Model):
 
     @property
     def inAndOut(self):
-        if index == "입금":
+        if self.index == "입금":
             return self.amount
-        elif index == "출금":
+        elif self.index == "출금":
             return self.amount * (-1)
         return self.amount
 
