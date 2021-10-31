@@ -113,6 +113,8 @@ def home(request):
         data.append(dummy)
 
 
+    income_rate = ( total_asset_sum - total_deposit_sum ) / total_deposit_sum * 100
+
 
     context = {
         "accounts":accounts,
@@ -131,6 +133,7 @@ def home(request):
         "asset_0_today":list_asset_1[today.strftime("%Y-%m-%d")],
         "total_deposit_sum":total_deposit_sum,
         "total_asset_sum":total_asset_sum,
+        "income_rate":income_rate,
    }
 
     return render(request, template, context)
