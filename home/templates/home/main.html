@@ -9,15 +9,21 @@
         <div class="col-12 my-4">
             <form action="" autocomplete="off" method="POST">
                 {% csrf_token %}
-                <div class="input-group mb-3">
-                    <span class="input-group-text" id="basic-addon1">From</span>
-                    <input type="text" class="form-control" id="startDate" name="startDate">
+                <div class="row">
+                    <div class="col-9">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="basic-addon1">From</span>
+                            <input type="text" class="form-control" id="startDate" name="startDate">
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="basic-addon2">To</span>
+                            <input type="text" class="form-control" id="endDate" name="endDate">
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <input class="btn btn-primary" type="submit" value="검색">
+                    </div>
                 </div>
-                <div class="input-group mb-3">
-                    <span class="input-group-text" id="basic-addon2">To</span>
-                    <input type="text" class="form-control" id="endDate" name="endDate">
-                </div>
-                <input class="btn btn-primary" type="submit" value="검색">
                 {% if startDate != 'None' %}
                     <div class="alert alert-primary my-4">
                         <p>{{startDate}} 부터 {{endDate}} 까지의 원금자산(입금내역) 입니다.</p>
