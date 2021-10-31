@@ -9,9 +9,15 @@
         <div class="col-12">
             <form action="" autocomplete="off" method="POST">
                 {% csrf_token %}
-                <input class="form-control" id="startDate" name="startDate">
-                <input class="form-control" id="endDate" name="endDate">
-                <input type="submit" value="go">
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">From</span>
+                    <input type="text" class="form-control" id="startDate" name="startDate">
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon2">To</span>
+                    <input type="text" class="form-control" id="endDate" name="endDate">
+                </div>
+                <input type="submit" value="검색">
             </form>
         </div>
         <div class="col-3">
