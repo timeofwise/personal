@@ -106,7 +106,9 @@ def home(request):
             dummy.append(dict_asset[today.strftime("%Y-%m-%d")])
         data.append(dummy)
 
-    #print(accounts)
+    total_deposit_sum=0
+    for t in data:
+        total_deposit_sum += t[1]
 
 
     context = {
@@ -124,6 +126,7 @@ def home(request):
         "data":data,
         "today":todatStr,
         "asset_0_today":list_asset_1[today.strftime("%Y-%m-%d")],
+        "total_deposit_sum":total_deposit_sum,
    }
 
     return render(request, template, context)
