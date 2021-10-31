@@ -5,8 +5,9 @@ from .models import *
 def home(request):
     template = "home/main.html"
     accounts = account.objects.all()
+    len_accounts = len(accounts)
 
 
-    context = {"accounts":accounts}
+    context = {"accounts":len_accounts}
 
     return render(request, template, context)
