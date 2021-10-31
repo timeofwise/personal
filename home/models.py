@@ -15,7 +15,7 @@ class deposit(models.Model):
     amount = models.IntegerField(null=True, default=0)
     deposit_account = models.ForeignKey(account, on_delete=models.PROTECT)
 
-    created = models.DateTimeField(auto_now_add=True, null=True)
+    created = models.DateTimeField(null=True)
 
     class Meta:
         ordering = ['-created']
@@ -23,7 +23,7 @@ class deposit(models.Model):
 class asset(models.Model):
     asset_account = models.ForeignKey(account, on_delete=models.PROTECT)
     current_amount = models.IntegerField(null=True, default=0)
-    created = models.DateTimeField(auto_now_add=True, null=True)
+    created = models.DateTimeField(null=True)
 
     class Meta:
         ordering = ['-created']
