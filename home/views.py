@@ -105,6 +105,13 @@ def home(request):
             #dummy.append(dict_asset[today.strftime("%Y-%m-%d")])
         data.append(dummy)
 
+    a={}
+    a['test1']=1
+    print(a)
+    a = {}
+    a['test2'] = 2
+    print(a)
+
 
     context = {
         "accounts":accounts,
