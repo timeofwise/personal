@@ -13,7 +13,7 @@ class account(models.Model):
 class deposit(models.Model):
     index = models.CharField(max_length=10, null=True, default="입금")
     amount = models.IntegerField(null=True, default=0)
-    deposit_account = models.ForeignKey(account, on_delete=models.PROTECT, default=4)
+    deposit_account = models.ForeignKey(account, on_delete=models.PROTECT, default=5)
 
     created = models.DateTimeField(null=True)
 
