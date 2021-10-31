@@ -62,24 +62,48 @@ def home(request):
     i=0
     for a in accounts:
         dummy=[]
+        list_asset_temp = [-1]
         i+=1
         dummy.append(a)
         if request.method == "POST":
             savings = deposit.objects.filter(deposit_account_id=i).filter(created__range=[startDate, endDate])
+            assets = asset.objects.filter(asset_account_id=i).filter(created__range=[startDate, endDate])
             dummy.append(savings)
             deposit_sum = 0
             for d in savings:
                 deposit_sum += d.inAndOut
             dummy.append(deposit_sum)
+            dict_asset = {}
+            for d in date_list:
+                for a in assets:
+                    if d.strftime("%Y-%m-%d") == a.created.strftime("%Y-%m-%d"):
+                        dict_asset[d.strftime("%Y-%m-%d")] = a.current_amount
+                        list_asset_temp = []
+                        list_asset_temp.append(a.current_amount)
+                    else:
+                        dict_asset[d.strftime("%Y-%m-%d")] = list_asset_temp[0]
+            dummy.append(dict_asset)
+            dummy.append(dict_asset[today.strftime("%Y-%m-%d")])
+
         else:
             savings = deposit.objects.filter(deposit_account_id=i)
+            assets = asset.objects.filter(asset_account_id=i)
             dummy.append(savings)
             deposit_sum = 0
             for d in savings:
                 deposit_sum += d.inAndOut
             dummy.append(deposit_sum)
+            for d in date_list:
+                for a in assets:
+                    if d.strftime("%Y-%m-%d") == a.created.strftime("%Y-%m-%d"):
+                        dict_asset[d.strftime("%Y-%m-%d")] = a.current_amount
+                        list_asset_temp = []
+                        list_asset_temp.append(a.current_amount)
+                    else:
+                        dict_asset[d.strftime("%Y-%m-%d")] = list_asset_temp[0]
+            dummy.append(dict_asset)
+            dummy.append(dict_asset[today.strftime("%Y-%m-%d")])
         data.append(dummy)
-
 
 
     context = {
