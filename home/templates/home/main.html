@@ -83,7 +83,7 @@
                                             {% for s in d.1 %}
                                                 <tr>
                                                     <td><span class="badge bg-secondary">{{s.created|date:'Y-m-d'}}</span></td>
-                                                    <td>{{s.amount|intcomma}}</td>
+                                                    <td><span style="float:right">{{s.amount|intcomma}}</span></td>
                                                 </tr>
                                             {% endfor %}
                                         </tbody>
