@@ -10,12 +10,14 @@ admin.site.register(account, accountAdmin)
 
 class depositAdmin(admin.ModelAdmin):
     list_display = ['id', 'index', 'amount', 'deposit_account', 'created']
+    list_filter = ['deposit_account']
     #list_editable = ['created']
 
 admin.site.register(deposit, depositAdmin)
 
 class assetAdmin(admin.ModelAdmin):
-    list_display = ['id', 'current_amount']
+    list_display = ['id', 'current_amount', 'asset_account']
+    list_filter = ['asset_account']
     ordering = ['-created']
 
 admin.site.register(asset, assetAdmin)
