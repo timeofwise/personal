@@ -16,6 +16,7 @@ def home(request):
     if request.method == "POST":
         startDate = request.POST['startDate']
         endDate = request.POST['endDate']
+        endDateObj = datetime.datetime.strptime(endDate, '%Y-%m-%d')
         date_list = pd.date_range(start=startDate, end=endDate)
         deposit_1 = deposit.objects.filter(deposit_account_id=1).filter(created__range=[startDate, endDate])  #삼성증권
         deposit_2 = deposit.objects.filter(deposit_account_id=2).filter(created__range=[startDate, endDate])  # 국민은행 인덱스펀드
@@ -42,9 +43,9 @@ def home(request):
 
     today = datetime.datetime.today()
     todatStr = today.strftime("%Y년 %m월 %d일")
-    today_year = datetime.datetime.today().year
-    today_month = datetime.datetime.today().month
-    today_day = datetime.datetime.today().day
+    #today_year = datetime.datetime.today().year
+    #today_month = datetime.datetime.today().month
+    #today_day = datetime.datetime.today().day
 
 
 
@@ -103,7 +104,7 @@ def home(request):
 
 
     income_rate = ( total_asset_sum - total_deposit_sum ) / total_deposit_sum * 100
-
+    print(endDateObj)
 
     context = {
         "accounts":accounts,
