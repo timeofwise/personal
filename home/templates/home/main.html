@@ -8,7 +8,7 @@
     <div class="row">
         <div class="col-3">
             {% for d in deposit_1 %}
-                {{d.amount}} // {{d.created:'Y-m-d'}}<br>
+                {{d.amount}} // {{d.created|date:'Y-m-d'}}<br>
             {% endfor %}
         </div>
         <div class="col-3">
