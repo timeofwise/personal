@@ -7,6 +7,7 @@
     {{accounts}}<br>
     <div class="row">
         <div class="col-3">
+            {{accounts.0.account_name}}<br>
             {% for d in deposit_1 %}
                 {{d.amount}} // {{d.created|date:'Y-m-d'}}<br>
             {% endfor %}
