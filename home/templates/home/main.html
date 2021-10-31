@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load 'humanize' %}
 
 {% block title %}Main Page {% endblock %}
 
@@ -20,7 +21,7 @@
                 </div>
             </div>
             {% for d in deposit_0 %}
-                {{d.amount}} // {{d.created|date:'Y-m-d'}}<br>
+                {{d.amount|intcomma}} // {{d.created|date:'Y-m-d'}}<br>
             {% endfor %}
         </div>
         <div class="col-3">
