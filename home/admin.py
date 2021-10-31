@@ -4,7 +4,8 @@ from .models import *
 # Register your models here.
 
 class accountAdmin(admin.ModelAdmin):
-    list_display = ['id', 'account_name']
+    list_display = ['id', 'account_name', 'ordering_level']
+    list_editable = ['ordering_level']
 
 admin.site.register(account, accountAdmin)
 
