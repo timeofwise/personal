@@ -41,6 +41,7 @@ def home(request):
         deposit_4_sum += d.inAndOut
 
     today = datetime.datetime.today()
+    todatStr = today.strftime("%Y년 %m월 %일")
     today_year = datetime.datetime.today().year
     today_month = datetime.datetime.today().month
     today_day = datetime.datetime.today().day
@@ -121,7 +122,7 @@ def home(request):
         "deposit_2_sum": deposit_3_sum,
         "deposit_3_sum": deposit_4_sum,
         "data":data,
-        "today":today,
+        "today":todatStr,
         "asset_0_today":list_asset_1[today.strftime("%Y-%m-%d")],
    }
 
