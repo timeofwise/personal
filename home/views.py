@@ -6,7 +6,7 @@ import datetime
 def home(request):
     template = "home/main.html"
     accounts = account.objects.all()
-    deposit_1 = deposit.objects.filter(deposit_account_id=1).filter(created__range=["2020-07-01", "2020-07-31"])  #삼성증권
+    deposit_1 = deposit.objects.filter(deposit_account_id=1).filter(created__range=["2020-07-01", "2020-08-01"])  #삼성증권
     deposit_1_sum = 0
     for d in deposit_1:
         deposit_1_sum += d.amount
