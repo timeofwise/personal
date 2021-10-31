@@ -38,9 +38,9 @@
 
             <div class="col-8 my-5">
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item">원금<span style="float:right">{{total_deposit_sum|intcomma}}</span></li>
+                    <li class="list-group-item">원금<span style="float:right;font-size:2em">{{total_deposit_sum|intcomma}}</span></li>
                     <li class="list-group-item">자산<span style="float:right">{{total_asset_sum|intcomma}}</span></li>
-                    <li class="list-group-item">손익(률)<span style="float:right">{{total_asset_sum|sub:total_deposit_sum|intcomma}}</span><br><span style="float:right">{{income_rate|floatformat:2}}%</span></li>
+                    <li class="list-group-item">손익(률)<span style="float:right;font-size:2em">{{total_asset_sum|sub:total_deposit_sum|intcomma}}</span><br><span style="float:right;font-size:1.5em">{{income_rate|floatformat:2}}%</span></li>
                 </ul>
             </div>
             <hr>
