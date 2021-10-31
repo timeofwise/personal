@@ -59,7 +59,8 @@ def home(request):
     for a in accounts:
         dummy=[]
         list_asset_temp = [-1]
-
+        dict_asset1 = {}
+        dict_asset2 = {}
         i+=1
         dummy.append(a)
         if request.method == "POST":
@@ -67,7 +68,7 @@ def home(request):
             assets = asset.objects.filter(asset_account__ordering_level=i).filter(created__range=[startDate, endDate])
             dummy.append(savings)
             deposit_sum = 0
-            dict_asset = {}
+
             for d in savings:
                 deposit_sum += d.inAndOut
                 total_deposit_sum += d.inAndOut
@@ -75,22 +76,22 @@ def home(request):
             for d in date_list:
                 for a in assets:
                     if d.strftime("%Y-%m-%d") == a.created.strftime("%Y-%m-%d"):
-                        dict_asset[d.strftime("%Y-%m-%d")] = a.current_amount
+                        dict_asset1[d.strftime("%Y-%m-%d")] = a.current_amount
                         list_asset_temp = []
                         list_asset_temp.append(a.current_amount)
                     else:
-                        dict_asset[d.strftime("%Y-%m-%d")] = list_asset_temp[0]
-            dummy.append(dict_asset)
-            print(dict_asset)
-            dummy.append(dict_asset[endDateForList])
-            total_asset_sum += dict_asset[endDateForList]
+                        dict_asset1[d.strftime("%Y-%m-%d")] = list_asset_temp[0]
+            dummy.append(dict_asset1)
+            print(dict_asset1)
+            dummy.append(dict_asset1[endDateForList])
+            total_asset_sum += dict_asset1[endDateForList]
 
         else:
             savings = deposit.objects.filter(deposit_account__ordering_level=i)
             assets = asset.objects.filter(asset_account__ordering_level=i)
             dummy.append(savings)
             deposit_sum = 0
-            dict_asset = {}
+
             for d in savings:
                 deposit_sum += d.inAndOut
                 total_deposit_sum += d.inAndOut
@@ -98,15 +99,15 @@ def home(request):
             for d in date_list:
                 for a in assets:
                     if d.strftime("%Y-%m-%d") == a.created.strftime("%Y-%m-%d"):
-                        dict_asset[d.strftime("%Y-%m-%d")] = a.current_amount
+                        dict_asset2[d.strftime("%Y-%m-%d")] = a.current_amount
                         list_asset_temp = []
                         list_asset_temp.append(a.current_amount)
                     else:
-                        dict_asset[d.strftime("%Y-%m-%d")] = list_asset_temp[0]
-            dummy.append(dict_asset)
-            print(dict_asset)
-            dummy.append(dict_asset[today.strftime("%Y-%m-%d")])
-            total_asset_sum += dict_asset[today.strftime("%Y-%m-%d")]
+                        dict_asset2[d.strftime("%Y-%m-%d")] = list_asset_temp[0]
+            dummy.append(dict_asset2)
+            print(dict_asset2)
+            dummy.append(dict_asset2[today.strftime("%Y-%m-%d")])
+            total_asset_sum += dict_asset2[today.strftime("%Y-%m-%d")]
         data.append(dummy)
 
 
