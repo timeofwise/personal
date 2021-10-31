@@ -16,7 +16,7 @@ class depositAdmin(admin.ModelAdmin):
 admin.site.register(deposit, depositAdmin)
 
 class assetAdmin(admin.ModelAdmin):
-    list_display = ['id', 'current_amount', 'asset_account']
+    list_display = ['id', 'current_amount', 'asset_account', '-created']
     list_filter = ['asset_account']
     ordering = ['-created']
 
