@@ -16,7 +16,7 @@ def home(request):
     if request.method == "POST":
         startDate = request.POST['startDate']
         endDate = (datetime.datetime.strptime(request.POST['endDate'], '%Y-%m-%d') + timedelta(days=1)).strftime("%Y-%m-%d")
-        date_list = pd.date_range(start=startDate, end=endDate)
+        date_list = pd.date_range(start=startDate, end=request.POST['endDate'])
         deposit_1 = deposit.objects.filter(deposit_account_id=1).filter(created__range=[startDate, endDate])  #삼성증권
         deposit_2 = deposit.objects.filter(deposit_account_id=2).filter(created__range=[startDate, endDate])  # 국민은행 인덱스펀드
         deposit_3 = deposit.objects.filter(deposit_account_id=3).filter(created__range=[startDate, endDate])  # KB증권 미국주식 메인
