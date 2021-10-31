@@ -29,9 +29,11 @@
                         <p>{{startDate}} 부터 {{endDate}} 까지의 원금자산(입금내역) 입니다.</p>
                     </div>
                 {% endif %}
-                {{accounts}}
             </form>
             <hr>
+        </div>
+        <div class="col-12 my-4">
+            {{today|date:'Y년 m월 d일'}}
         </div>
         <div class="col-12">
             <div class="row">

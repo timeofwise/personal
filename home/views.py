@@ -121,6 +121,7 @@ def home(request):
         "deposit_2_sum": deposit_3_sum,
         "deposit_3_sum": deposit_4_sum,
         "data":data,
+        "today":today,
         "asset_0_today":list_asset_1[today.strftime("%Y-%m-%d")],
    }
 
