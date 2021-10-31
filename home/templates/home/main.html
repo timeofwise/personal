@@ -5,8 +5,27 @@
 {% block content %}
 <div class="container">
     {{accounts}}<br>
-    {% for d in deposit_1 %}
-    {{d.amount}} // {{d.created}}<br>
-    {% endfor %}
+    <div class="row">
+        <div class="col-3">
+            {% for d in deposit_1 %}
+                {{d.amount}} // {{d.created}}<br>
+            {% endfor %}
+        </div>
+        <div class="col-3">
+            {% for d in deposit_2 %}
+                {{d.amount}} // {{d.created}}<br>
+            {% endfor %}
+        </div>
+        <div class="col-3">
+            {% for d in deposit_3 %}
+                {{d.amount}} // {{d.created}}<br>
+            {% endfor %}
+        </div>
+        <div class="col-3">
+            {% for d in deposit_4 %}
+                {{d.amount}} // {{d.created}}<br>
+            {% endfor %}
+        </div>
+    </div>
 </div>
 {% endblock %}
