@@ -8,10 +8,10 @@
         <div class="col-3">
             <div class="card mb-3" style="max-width: 540px;">
                 <div class="row g-0">
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <img src="{{accounts.0.account_img.url}}" class="img-fluid rounded-start" alt="...">
                     </div>
-                    <div class="col-md-8">
+                    <div class="col-md-9">
                         <div class="card-body">
                             <h5 class="card-title">{{accounts.0.account_name}}</h5>
                             <p class="card-text">{{accounts.0.description}}</p>
@@ -19,8 +19,13 @@
                     </div>
                 </div>
             </div>
-            {% for d in deposit_1 %}
+            {% for d in deposit_0 %}
                 {{d.amount}} // {{d.created|date:'Y-m-d'}}<br>
+            {% endfor %}
+        </div>
+        <div class="col-3">
+            {% for d in deposit_1 %}
+                {{d.amount}} // {{d.created}}<br>
             {% endfor %}
         </div>
         <div class="col-3">
@@ -30,11 +35,6 @@
         </div>
         <div class="col-3">
             {% for d in deposit_3 %}
-                {{d.amount}} // {{d.created}}<br>
-            {% endfor %}
-        </div>
-        <div class="col-3">
-            {% for d in deposit_4 %}
                 {{d.amount}} // {{d.created}}<br>
             {% endfor %}
         </div>

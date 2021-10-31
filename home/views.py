@@ -14,10 +14,10 @@ def home(request):
 
     context = {
         "accounts":accounts,
-        "deposit_1":deposit_1,
-        "deposit_2":deposit_2,
-        "deposit_3":deposit_3,
-        "deposit_4":deposit_4,
+        "deposit_0":deposit_1,
+        "deposit_1":deposit_2,
+        "deposit_2":deposit_3,
+        "deposit_3":deposit_4,
    }
 
     return render(request, template, context)
