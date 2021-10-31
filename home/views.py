@@ -65,7 +65,8 @@ def home(request):
         dummy.append(a)
         if request.method == "POST":
             savings = deposit.objects.filter(deposit_account__ordering_level=i).filter(created__range=[startDate, endDate])
-            assets = asset.objects.filter(asset_account__ordering_level=i).filter(created__range=[startDate, endDate])
+            #assets = asset.objects.filter(asset_account__ordering_level=i).filter(created__range=[startDate, endDate])
+            assets = asset.objects.filter(asset_account__ordering_level=i)
             dummy.append(savings)
             deposit_sum = 0
 
