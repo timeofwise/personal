@@ -135,6 +135,7 @@ def home(request):
 
     return render(request, template, context)
 
+@login_required(login_url='account:login')
 class addAsset(CreateView):
     model = asset
     fields = [
@@ -145,6 +146,7 @@ class addAsset(CreateView):
     success_url = reverse_lazy('home:add-asset')
     template_name_suffix = '_create'
 
+@login_required(login_url='account:login')
 class addDeposit(CreateView):
     model = deposit
     fields = [
