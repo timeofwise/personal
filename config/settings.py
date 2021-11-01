@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'mathfilters',
 
     'home',
+    'account',
 ]
 
 MIDDLEWARE = [
