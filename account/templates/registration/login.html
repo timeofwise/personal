@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% block title %}로그인{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row my-5">
+        <div class="col-md-2"></div>
+        <div class="col-md-8 my-2 panel panel-default">
+            <div class="alert alert-warning mb-5">
+                This menu is temporarily opened for authorized staffs only.<br>
+            </div>
+            <form action="" method="post">
+                {% csrf_token %}
+                {{ form.non_field_errors }}
+                <table class="table table-borderless">
+                    <thead>
+                        <tr>
+                            <th style="width:35%"></th>
+                            <th style="width:65%"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                {{ form.username.errors }}
+                                <label for="id_username" class="px-4">ID(or Name):</label>
+                            </td>
+                            <td>
+                                <input type="text" class="form-control form-control-sm px-4" name="username" autofocus="" autocapitalize="none" autocomplete="username" maxlength="150" required="" id="id_username">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                {{ form.password.errors }}
+                                <label for="id_password" class="px-4">Password:</label>
+                            </td>
+                            <td>
+                                <input type="password" class="form-control form-control-sm px-4" name="password" autocomplete="current-password" required="" id="id_password">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <input class="btn btn-primary my-5" type="submit" value="Sign in" style="float:right">
+            </form>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+</div>
+{% endblock %}

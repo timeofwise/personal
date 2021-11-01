@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% block title %}사용자 등록{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8 panel panel-default">
+            <div class="alert alert-info">
+                등록 정보를 입력해주세요.<br><br>
+                <li>'담당자 이름'은 본명을 기입해주세요.</li>
+                <li>'이메일 주소'는 정확히 기입해주십시오.</li>
+            </div>
+            <form action="" method="post">
+                {% csrf_token %}
+                {{ form.non_field_errors }}
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>구분</th>
+                            <th>입력필드</th>
+                            <th>비고</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <label for="id_username">이름(ID):</label>
+                            </td>
+                            <td>
+                                {{ form.username }}
+                            </td>
+                            <td>본명을 기입해주세요.<br>(부득이한 특수문자 사용시, 숫자 그리고 @/./+/-/_만 가능합니다.)<br>{{ form.username.errors }}</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="id_email">이메일 주소:</label>
+                            </td>
+                            <td>
+                                {{ form.email }}
+                            </td>
+                            <td>{{ form.email.errors }}</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="id_password">비밀번호:</label>
+                            </td>
+                            <td>
+                                {{ form.password }}
+                            </td>
+                            <td>{{ form.password.errors }}</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="id_password2">비밀번호 확인:</label>
+                            </td>
+                            <td>
+                                {{ form.password2 }}
+                            </td>
+                            <td>{{ form.password2.errors }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <input class="btn btn-primary" type="submit" value="등록" style="float:right">
+            </form>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+</div>
+{% endblock %}

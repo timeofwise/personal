@@ -3,8 +3,10 @@ import pandas as pd
 from .models import *
 import datetime
 from datetime import timedelta
-
+from django.contrib.auth.decorators import login_required
 # Create your views here.
+
+@login_required(login_url='account:to_login')
 def home(request):
     template = "home/main.html"
     accounts = account.objects.all()
