@@ -6,4 +6,5 @@ app_name = 'home'
 urlpatterns = [
     path('', home, name="home"),
     path('home/', home, name="home"),
+    path('add-asset/', addAsset.as_view(), name='add-asset'),
 ]

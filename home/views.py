@@ -4,6 +4,8 @@ from .models import *
 import datetime
 from datetime import timedelta
 from django.contrib.auth.decorators import login_required
+from django.views.generic.edit import CreateView
+from django.urls import reverse_lazy
 # Create your views here.
 
 @login_required(login_url='account:login')
@@ -132,3 +134,13 @@ def home(request):
    }
 
     return render(request, template, context)
+
+class addAsset(CreateView):
+    model = asset
+    fields = [
+        'asset_account',
+        'current_amount',
+        'created',
+    ]
+    success_url = reverse_lazy('home:home')
+    template_name_suffix = '_create'
