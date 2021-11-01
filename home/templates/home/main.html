@@ -43,7 +43,7 @@
             <div class="col-11 my-5">
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">원금<span style="float:right;font-size:1.8em;font-weight:700">{{total_deposit_sum|intcomma}}</span></li>
-                    <li class="list-group-item"><a href="#" class="btn btn-sm btn-dark rounded">자산</a><span style="float:right;font-size:1.8em;font-weight:700">{{total_asset_sum|intcomma}}</span></li>
+                    <li class="list-group-item"><a href="#" class="btn btn-sm btn-dark rounded">자산 <i class="fas fa-chart-line"></i></a><span style="float:right;font-size:1.8em;font-weight:700">{{total_asset_sum|intcomma}}</span></li>
                     <li class="list-group-item">손익금<span style="float:right;font-size:1.8em;font-weight:700">{{total_asset_sum|sub:total_deposit_sum|intcomma}}</span></li>
                     <li class="list-group-item">손익률<span style="float:right;font-size:1.5em;font-weight:500">{{income_rate|floatformat:2}}%</span></li>
                 </ul>
