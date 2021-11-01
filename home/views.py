@@ -113,6 +113,7 @@ def home(request):
 
 
     income_rate = ( total_asset_sum - total_deposit_sum ) / total_deposit_sum * 100
+    last_update = asset.objects.all()
 
     context = {
         "accounts":accounts,
@@ -125,6 +126,7 @@ def home(request):
         "total_asset_sum":total_asset_sum,
         "income_rate":income_rate,
         "assets":assets,
+        "last_update":last_update,
    }
 
     return render(request, template, context)
