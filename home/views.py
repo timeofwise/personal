@@ -156,3 +156,10 @@ class addDeposit(CreateView):
     ]
     success_url = reverse_lazy('home:add-deposit')
     template_name_suffix = '_create'
+
+def assetChart(request):
+    template ='home/asset_chart.html'
+
+    context = {}
+
+    return render(request, template, context)
