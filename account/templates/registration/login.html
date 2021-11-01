@@ -7,7 +7,7 @@
         <div class="col-md-2"></div>
         <div class="col-md-8 my-2 panel panel-default">
             <div class="alert alert-info mb-5">
-                <center>식별코드를 입력하세요!</center>
+                <center><span style="font-size:1.2em;font-weight:600">식별코드를 입력하세요!</span></center>
             </div>
             <form action="" method="post">
                 {% csrf_token %}
@@ -15,8 +15,8 @@
                 <table class="table table-borderless">
                     <thead>
                         <tr>
-                            <th style="width:35%"></th>
-                            <th style="width:65%"></th>
+                            <th></th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -35,7 +35,7 @@
                                 <label for="id_password" class="">코드:</label>
                             </td>
                             <td>
-                                <input type="password" class="form-control form-control-sm px-4" name="password" autocomplete="current-password" required="" id="id_password">
+                                <input type="password" class="form-control rounded-pill" name="password" autocomplete="current-password" required="" id="id_password">
                             </td>
                         </tr>
                     </tbody>
