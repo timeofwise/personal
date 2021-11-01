@@ -142,5 +142,15 @@ class addAsset(CreateView):
         'current_amount',
         'created',
     ]
-    success_url = reverse_lazy('home:home')
+    success_url = reverse_lazy('home:add-asset')
+    template_name_suffix = '_create'
+
+class addDeposit(CreateView):
+    model = deposit
+    fields = [
+        'index',
+        'amount',
+        'deposit_account',
+    ]
+    success_url = reverse_lazy('home:add-deposit')
     template_name_suffix = '_create'

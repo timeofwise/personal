@@ -7,4 +7,5 @@ urlpatterns = [
     path('', home, name="home"),
     path('home/', home, name="home"),
     path('add-asset/', addAsset.as_view(), name='add-asset'),
+    path('add-deposit/', addDeposit.as_view(), name='add-deposit'),
 ]

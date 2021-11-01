@@ -19,7 +19,7 @@ class deposit(models.Model):
     amount = models.IntegerField(null=True, default=0)
     deposit_account = models.ForeignKey(account, on_delete=models.PROTECT, default=5)
 
-    created = models.DateTimeField(null=True)
+    created = models.DateTimeField(auto_now_add=True, null=True)
 
     @property
     def inAndOut(self):

@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}입출금 등록{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8 my-5">
+            <form action="" method="post">
+                {% csrf_token %}
+                {{form.as_p}}
+                <center>
+                    <input type="submit" value="Add" class="btn btn-primary rounded-pill px-4 py-2 my-5">
+                </center>
+            </form>
+        <div class="col-md-2"></div>
+    </div>
+</div>
+{% endblock %}
