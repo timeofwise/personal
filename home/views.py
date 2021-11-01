@@ -6,7 +6,7 @@ from datetime import timedelta
 from django.contrib.auth.decorators import login_required
 # Create your views here.
 
-@login_required(login_url='account:to_login')
+@login_required(login_url='to_login')
 def home(request):
     template = "home/main.html"
     accounts = account.objects.all()
