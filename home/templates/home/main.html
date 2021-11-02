@@ -35,6 +35,27 @@
                 {% endif %}
             </form>
             <hr>
+            <form action="" autocomplete="off" method="POST">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="col-9">
+                        <div class="input-group mb-3 d-none">
+                            <span class="input-group-text" id="basic-addon1">날짜</span>
+                            <input type="text" class="form-control" id="startDate" name="startDate" value="2020-01-01" placeholder="2021-01-01">
+                            <span class="input-group-text">부터</span>
+                        </div>
+                        <div class="input-group mb-3 d-none">
+                            <span class="input-group-text" id="basic-addon2">날짜</span>
+                            <input type="text" class="form-control" id="endDate" name="endDate" value="2020-12-31" placeholder="2021-01-01">
+                            <span class="input-group-text">까지</span>
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <input class="btn btn-success btn-sm" type="submit" value="2020">
+                    </div>
+                </div>
+            </form>
+            <hr>
         </div>
         <div class="col-12 my-4">
             <h3><span style="font-weight:600">{{today}}</span><br><span style="font-weight:600">또또맘's 자산리포트입니다. </span></h3>
