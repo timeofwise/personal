@@ -17,10 +17,14 @@ def home(request):
     deposit_3_sum = 0
     deposit_4_sum = 0
     data=[]
+    inputStartDate = ""
+    inputEndDate = ""
     if request.method == "POST":
         startDate = request.POST['startDate']
+        inputStartDate = startDate
         endDate = (datetime.datetime.strptime(request.POST['endDate'], '%Y-%m-%d') + timedelta(days=1)).strftime("%Y-%m-%d")
         endDateForList = request.POST['endDate']
+        inputEndDate = endDateForList
         #date_list = pd.date_range(start=startDate, end=endDateForList)
         date_list = pd.date_range(start="2020-07-27", end=datetime.date.today())
         deposit_1 = deposit.objects.filter(deposit_account_id=1).filter(created__range=[startDate, endDate])   #삼성증권
@@ -131,6 +135,8 @@ def home(request):
         "income_rate":income_rate,
         "assets":assets,
         "last_update":last_update,
+        "inputStartDate":inputStartDate,
+        "inputEndDate":inputEndDate,
    }
 
     return render(request, template, context)
@@ -157,6 +163,7 @@ class addDeposit(CreateView):
     success_url = reverse_lazy('home:add-deposit')
     template_name_suffix = '_create'
 
+@login_required(login_url='account:login')
 def assetChart(request):
     template ='home/asset_chart.html'
 
