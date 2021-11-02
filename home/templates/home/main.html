@@ -97,16 +97,16 @@
                                     <span style="font-size:0.8em">손익</span>
                                 </td>
                                 <td>
-                                    <span style="float:right;font-weight:600">{{d.4|sub:d.2|intcomma}}</span>
+                                    <span id="indiIncome_{{forloop.counter}}" style="float:right;font-weight:600">{{d.4|sub:d.2|intcomma}}</span>
                                 </td>
                             </tr>
                             <tr>
                                 <td>
                                     <span style="float:right;font-weight:600">
                                         {% if d.2 != 0 %}
-                                            {{d.4|sub:d.2|div:d.2|mul:100|floatformat:2}}%
+                                            {{d.4|sub:d.2|div:d.2|mul:100|floatformat:2}}<span id="indiIncomeRate_{{forloop.counter}}" style="fomt-size:0.75em">%</span>
                                         {% else %}
-                                            -%
+                                            -<span style="fomt-size:0.75em">%</span>
                                         {% endif %}
                                     </span>
                                 </td>
@@ -171,6 +171,17 @@ $(document).ready(function(){
         $(".grossIncome").addClass("text-primary");
         $(".grossIncomeRate").addClass("text-primary");
     }
+});
+$(document).ready(function(){
+    {% for d in data %}
+        if(parseInt({{d.4|sub:d.2}}) > 0){
+            $("#indiIncome_{{forloop.counter}}").addClass("text-danger");
+            $("#indiIncomeRate_{{forloop.counter}}").addClass("text-danger");
+        }else if(parseInt({{d.4|sub:d.2}}) < 0){
+            $("#indiIncome_{{forloop.counter}}").addClass("text-primary");
+            $("#indiIncomeRate_{{forloop.counter}}").addClass("text-primary");
+        }
+    {% endfor %}
 });
 </script>
 {% endblock %}
