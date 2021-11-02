@@ -40,6 +40,8 @@ class asset(models.Model):
     class Meta:
         ordering = ['-created']
 
+    def __str__(self):
+        return self.asset_account.account_name + " , " + str(self.current_amount) + " , " + self.created.strftime("%Y-%m-%d")
 
 class data(models.Model):
     currentValue1 = models.IntegerField(null=True, default=0)
