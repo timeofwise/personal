@@ -102,11 +102,11 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <span style="float:right;font-weight:600">
+                                    <span id="indiIncomeRate_{{forloop.counter}}" style="float:right;font-weight:600">
                                         {% if d.2 != 0 %}
-                                            {{d.4|sub:d.2|div:d.2|mul:100|floatformat:2}}<span id="indiIncomeRate_{{forloop.counter}}" style="fomt-size:0.75em">%</span>
+                                            {{d.4|sub:d.2|div:d.2|mul:100|floatformat:2}}<span style="font-size:0.75em">%</span>
                                         {% else %}
-                                            -<span style="fomt-size:0.75em">%</span>
+                                            -<span style="font-size:0.75em">%</span>
                                         {% endif %}
                                     </span>
                                 </td>
