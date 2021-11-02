@@ -190,8 +190,8 @@ def assetDetail(request, id):
     template = 'home/asset_detail.html'
 
     if request.method == "POST":
-        startDate = request.post['startDate']
-        endDate = request.post['endDate']
+        startDate = request.POST['startDate']
+        endDate = request.POST['endDate']
     else:
         return redirect('home:home')
 
