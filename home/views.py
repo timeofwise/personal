@@ -133,6 +133,7 @@ def home(request):
     filtered_deposit_sum += total_deposit_sum
     income_rate = ( total_asset_sum - filtered_deposit_sum ) / filtered_deposit_sum * 100
     last_update = asset.objects.all()
+    filterToday = today.strftime("%Y-%m-%d")
 
 
     context = {
@@ -150,6 +151,7 @@ def home(request):
         "last_update":last_update,
         "inputStartDate":inputStartDate,
         "inputEndDate":inputEndDate,
+        "filterToday":filterToday,
    }
 
     return render(request, template, context)
