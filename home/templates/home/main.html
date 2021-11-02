@@ -53,7 +53,21 @@
                         </div>
                     </div>
                     <div class="col-12">
-                        <input class="btn btn-success btn-sm" type="submit" value="2020">
+                        <div class="btn-group dropend">
+                            <button type="button" class="btn btn-success btn-sm">
+                            Split dropend
+                            </button>
+                            <button type="submit" class="btn btn-success btn-sm dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                                <span class="visually-hidden">2020</span>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item active" href="#">Action</a></li>
+                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="#">Separated link</a></li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </form>
