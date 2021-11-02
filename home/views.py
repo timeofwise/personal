@@ -24,9 +24,11 @@ def home(request):
         inputStartDate = startDate
         endDate = (datetime.datetime.strptime(request.POST['endDate'], '%Y-%m-%d') + timedelta(days=1)).strftime("%Y-%m-%d")
         endDateForList = request.POST['endDate']
+        AssetBeforeStartDate = (datetime.datetime.strptime(request.POST['endDate'], '%Y-%m-%d') - timedelta(days=1)).strftime(
+            "%Y-%m-%d")
         inputEndDate = endDateForList
         #date_list = pd.date_range(start=startDate, end=endDateForList)
-        date_list = pd.date_range(start="2020-07-27", end=datetime.date.today())
+        date_list = pd.date_range(start="2020-01-01", end=datetime.date.today())
         deposit_1 = deposit.objects.filter(deposit_account_id=1).filter(created__range=[startDate, endDate])   #삼성증권
         deposit_2 = deposit.objects.filter(deposit_account_id=2).filter(created__range=[startDate, endDate])  # 국민은행 인덱스펀드
         deposit_3 = deposit.objects.filter(deposit_account_id=3).filter(created__range=[startDate, endDate])  # KB증권 미국주식 메인
@@ -92,6 +94,7 @@ def home(request):
                         dict_asset1[d.strftime("%Y-%m-%d")] = list_asset_temp[0]
             dummy.append(dict_asset1)
             print(dict_asset1)
+            deposit_sum += dict_asset1[AssetBeforeStartDate]
             dummy.append(dict_asset1[endDateForList])
             total_asset_sum += dict_asset1[endDateForList]
 
