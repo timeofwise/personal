@@ -46,7 +46,7 @@
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">원금<span style="float:right;font-size:1.8em;font-weight:700">{{filtered_deposit_sum|intcomma}} <span style="font-size:0.8em">원</span></span></li>
                     <li class="list-group-item">자산 <a href="{% url 'home:chart-asset' %}" class="btn btn-sm btn-dark rounded"><i class="fas fa-chart-line"></i></a><span style="float:right;font-size:1.8em;font-weight:700">{{total_asset_sum|intcomma}} <span style="font-size:0.8em">원</span></span></li>
-                    <li class="list-group-item">손익금<span style="float:right;font-size:1.8em;font-weight:700">{{total_asset_sum|sub:filtered_deposit_sum|intcomma}} <span style="font-size:0.8em">원</span></span></li>
+                    <li class="list-group-item">손익금<span style="float:right;font-size:1.8em;font-weight:700"><span id="grossIncome">{{total_asset_sum|sub:filtered_deposit_sum|intcomma}}</span> <span style="font-size:0.8em">원</span></span></li>
                     <li class="list-group-item">손익률<span style="float:right;font-size:1.5em;font-weight:500">{{income_rate|floatformat:2}} <span style="font-size:0.8em">%</span></span></li>
                 </ul>
             </div>
@@ -161,5 +161,14 @@
             format:'yyyy-mm-dd',
         });
     });
+</script>
+<script>
+$(document).ready(function(){
+    if(parseInt(document.getElementById("#grossIncome").innerText.replaceAll(",","")) > 0){
+         $("#grossIncome").addClass("text-danger");
+    } else if(parseInt(document.getElementById("#grossIncome").innerText.replaceAll(",","")) < 0){
+        $("#grossIncome").addClass("text-primary");
+    }
+});
 </script>
 {% endblock %}
