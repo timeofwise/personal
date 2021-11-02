@@ -156,9 +156,9 @@
                                     <form class="mx-0 my-0 px-0 py-0" style="display:inline!important" action="{% url 'home:detail-asset' id=d.0.id %}" autocomplete="off" method="POST">
                                         <input class="d-none" name="startDate" value="{{startDate}}">
                                         <input class="d-none" name="endDate" value="{{endDateForList}}">
-                                        <a type="submit" id="asset_{{forloop.counter}}" class="">
+                                        <button type="submit" id="asset_{{forloop.counter}}" class="text-primary bg-none">
                                             <i class="fas fa-list-ul" style="font-size:0.8em"></i>
-                                        </a>
+                                        </button>
                                     </form>
                                 </td>
                                 <td>
