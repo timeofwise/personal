@@ -187,14 +187,18 @@ def assetChart(request):
 
 @login_required(login_url='account:login')
 def assetDetail(request, id):
-    template = ''
+    template = 'home/asset_detail.html'
 
     if request.method == "POST":
-        pass
+        startDate = request.post['startDate']
+        endDate = request.post['endDateForList']
     else:
         return redirect('home:home')
 
 
-    context = {}
+    context = {
+        "startDate":startDate,
+        "endDate":endDate,
+    }
 
     return render(request, template, context)
