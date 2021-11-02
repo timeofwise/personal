@@ -164,9 +164,9 @@
 </script>
 <script>
 $(document).ready(function(){
-    if(parseInt(document.getElementById("#grossIncome").innerText.replaceAll(",","")) > 0){
+    if(parseInt(document.getElementById("grossIncome").innerText.replaceAll(",","")) > 0){
          $("#grossIncome").addClass("text-danger");
-    } else if(parseInt(document.getElementById("#grossIncome").innerText.replaceAll(",","")) < 0){
+    } else if(parseInt(document.getElementById("grossIncome").innerText.replaceAll(",","")) < 0){
         $("#grossIncome").addClass("text-primary");
     }
 });
