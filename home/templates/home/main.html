@@ -153,7 +153,7 @@
                             <tr>
                                 <td>
                                     <span style="font-size:0.8em">자산</span>
-                                    <form style="margin: 0; padding: 0;" action="{% url 'home:detail-asset' id=d.0.id %}" autocomplete="off" method="POST">
+                                    <form class="mx-0 my-0 px-0 py-0" style="display:inline!important" action="{% url 'home:detail-asset' id=d.0.id %}" autocomplete="off" method="POST">
                                         <input class="d-none" name="startDate" value="{{startDate}}">
                                         <input class="d-none" name="endDate" value="{{endDateForList}}">
                                         <a type="submit" id="asset_{{forloop.counter}}" class="">
