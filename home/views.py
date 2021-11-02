@@ -131,7 +131,7 @@ def home(request):
         data.append(dummy)
 
     filtered_deposit_sum += total_deposit_sum
-    income_rate = ( total_asset_sum - filtered_deposit_sum ) / total_deposit_sum * 100
+    income_rate = ( total_asset_sum - filtered_deposit_sum ) / filtered_deposit_sum * 100
     last_update = asset.objects.all()
 
 
