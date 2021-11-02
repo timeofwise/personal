@@ -96,6 +96,7 @@ def home(request):
 
             #print(dict_asset1)
             deposit_sum += dict_asset1[AssetBeforeStartDate]
+            total_deposit_sum += dict_asset1[AssetBeforeStartDate]
             dummy.append(deposit_sum)
             dummy.append(dict_asset1)
             dummy.append(dict_asset1[endDateForList])
