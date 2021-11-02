@@ -70,7 +70,7 @@ def home(request):
     total_asset_sum = 0
     for a in accounts:
         dummy=[]
-        list_asset_temp = [-1]
+        list_asset_temp = [0]
         dict_asset1 = {}
         dict_asset2 = {}
         i+=1
