@@ -191,7 +191,7 @@ def assetDetail(request, id):
 
     if request.method == "POST":
         startDate = request.post['startDate']
-        endDate = request.post['endDateForList']
+        endDate = request.post['endDate']
     else:
         return redirect('home:home')
 
