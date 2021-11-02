@@ -38,6 +38,7 @@ def home(request):
         startDate = "None"
         endDate = "None"
         endDateForList = "None"
+        AssetBeforeStartDate = "None"
         #date_list = pd.date_range(start=startDate, end=endDateForList)
         date_list = pd.date_range(start="2020-07-27", end=datetime.date.today())
         deposit_1 = deposit.objects.filter(deposit_account_id=1)  # 삼성증권
