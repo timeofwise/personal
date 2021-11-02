@@ -16,10 +16,12 @@ def home(request):
     deposit_2_sum = 0
     deposit_3_sum = 0
     deposit_4_sum = 0
+    today = datetime.datetime.today()
     data=[]
     inputStartDate = ""
     inputEndDate = ""
     if request.method == "POST":
+        todayStr = f"{request.POST['startDate']} ~ {request.POST['endDate']} 기간의"
         startDate = request.POST['startDate']
         inputStartDate = startDate
         endDate = (datetime.datetime.strptime(request.POST['endDate'], '%Y-%m-%d') + timedelta(days=1)).strftime("%Y-%m-%d")
@@ -28,13 +30,14 @@ def home(request):
             "%Y-%m-%d")
         inputEndDate = endDateForList
         #date_list = pd.date_range(start=startDate, end=endDateForList)
-        date_list = pd.date_range(start="2020-01-01", end=datetime.date.today())
+        date_list = pd.date_range(start="2019-12-31", end=datetime.date.today())
         deposit_1 = deposit.objects.filter(deposit_account_id=1).filter(created__range=[startDate, endDate])   #삼성증권
         deposit_2 = deposit.objects.filter(deposit_account_id=2).filter(created__range=[startDate, endDate])  # 국민은행 인덱스펀드
         deposit_3 = deposit.objects.filter(deposit_account_id=3).filter(created__range=[startDate, endDate])  # KB증권 미국주식 메인
         deposit_4 = deposit.objects.filter(deposit_account_id=4).filter(created__range=[startDate, endDate])  # 신한금투 미국주식 서브
 
     else:
+        todayStr = today.strftime("%Y년 %m월 %d일")
         startDate = "None"
         endDate = "None"
         endDateForList = "None"
@@ -55,8 +58,8 @@ def home(request):
     for d in deposit_4:
         deposit_4_sum += d.inAndOut
 
-    today = datetime.datetime.today()
-    todatStr = today.strftime("%Y년 %m월 %d일")
+
+
     #today_year = datetime.datetime.today().year
     #today_month = datetime.datetime.today().month
     #today_day = datetime.datetime.today().day
@@ -138,7 +141,7 @@ def home(request):
         "endDate":endDate,
         "endDateForList":endDateForList,
         "data":data,
-        "today":todatStr,
+        "today":todayStr,
         "total_deposit_sum":total_deposit_sum,
         "filtered_deposit_sum": filtered_deposit_sum,
         "total_asset_sum":total_asset_sum,
