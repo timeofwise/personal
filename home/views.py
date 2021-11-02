@@ -66,6 +66,7 @@ def home(request):
 
     i=0
     total_deposit_sum = 0
+    filtered_deposit_sum = 0
     total_asset_sum = 0
     for a in accounts:
         dummy=[]
@@ -96,7 +97,7 @@ def home(request):
 
             #print(dict_asset1)
             deposit_sum += dict_asset1[AssetBeforeStartDate]
-            total_deposit_sum += dict_asset1[AssetBeforeStartDate]
+            filtered_deposit_sum += dict_asset1[AssetBeforeStartDate]
             dummy.append(deposit_sum)
             dummy.append(dict_asset1)
             dummy.append(dict_asset1[endDateForList])
@@ -126,9 +127,10 @@ def home(request):
             total_asset_sum += dict_asset2[today.strftime("%Y-%m-%d")]
         data.append(dummy)
 
-
-    income_rate = ( total_asset_sum - total_deposit_sum ) / total_deposit_sum * 100
+    filtered_deposit_sum += total_deposit_sum
+    income_rate = ( total_asset_sum - filtered_deposit_sum ) / total_deposit_sum * 100
     last_update = asset.objects.all()
+
 
     context = {
         "accounts":accounts,
@@ -138,13 +140,13 @@ def home(request):
         "data":data,
         "today":todatStr,
         "total_deposit_sum":total_deposit_sum,
+        "filtered_deposit_sum": filtered_deposit_sum,
         "total_asset_sum":total_asset_sum,
         "income_rate":income_rate,
         "assets":assets,
         "last_update":last_update,
         "inputStartDate":inputStartDate,
         "inputEndDate":inputEndDate,
-        "AssetBeforeStartDate":AssetBeforeStartDate,
    }
 
     return render(request, template, context)
