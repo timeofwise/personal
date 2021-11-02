@@ -83,7 +83,7 @@ def home(request):
             for d in savings:
                 deposit_sum += d.inAndOut
                 total_deposit_sum += d.inAndOut
-            dummy.append(deposit_sum)
+
             for d in date_list:
                 for a in assets:
                     if d.strftime("%Y-%m-%d") == a.created.strftime("%Y-%m-%d"):
@@ -92,9 +92,11 @@ def home(request):
                         list_asset_temp.append(a.current_amount)
                     else:
                         dict_asset1[d.strftime("%Y-%m-%d")] = list_asset_temp[0]
-            dummy.append(dict_asset1)
-            print(dict_asset1)
+
+            #print(dict_asset1)
             deposit_sum += dict_asset1[AssetBeforeStartDate]
+            dummy.append(deposit_sum)
+            dummy.append(dict_asset1)
             dummy.append(dict_asset1[endDateForList])
             total_asset_sum += dict_asset1[endDateForList]
 
@@ -140,6 +142,7 @@ def home(request):
         "last_update":last_update,
         "inputStartDate":inputStartDate,
         "inputEndDate":inputEndDate,
+        "AssetBeforeStartDate":AssetBeforeStartDate,
    }
 
     return render(request, template, context)
