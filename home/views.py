@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 import pandas as pd
 from .models import *
 import datetime
@@ -180,6 +180,20 @@ class addDeposit(CreateView):
 @login_required(login_url='account:login')
 def assetChart(request):
     template ='home/asset_chart.html'
+
+    context = {}
+
+    return render(request, template, context)
+
+@login_required(login_url='account:login')
+def assetDetail(request, id):
+    template = ''
+
+    if request.method == "POST":
+        pass
+    else:
+        return redirect('home:home')
+
 
     context = {}
 

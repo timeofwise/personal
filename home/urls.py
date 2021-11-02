@@ -7,6 +7,7 @@ urlpatterns = [
     path('', home, name="home"),
     path('home/', home, name="home"),
     path('home/chart-asset/', assetChart, name="chart-asset"),
-    path('add-asset/', addAsset.as_view(), name='add-asset'),
-    path('add-deposit/', addDeposit.as_view(), name='add-deposit'),
+    path('asset/add/', addAsset.as_view(), name='add-asset'),
+    path('asset/detail/<int:id>/', assetDetail, name='detail-asset'),
+    path('deposit/add/', addDeposit.as_view(), name='add-deposit'),
 ]

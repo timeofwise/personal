@@ -153,9 +153,13 @@
                             <tr>
                                 <td>
                                     <span style="font-size:0.8em">자산</span>
-                                    <a href="#" id="asset_{{forloop.counter}}" class="" data-bs-toggle="modal" data-bs-target="#assetModal_{{forloop.counter}}">
-                                        <i class="fas fa-list-ul" style="font-size:0.8em"></i>
-                                    </a>
+                                    <form class="mx-0 my-0 px-0 py-0" action="{% url 'home:detail-asset' id=d.0.id %}" autocomplete="off" method="POST">
+                                        <input class="d-none" name="startDate" value="{{startDate}}">
+                                        <input class="d-none" name="endDate" value="{{endDateForList}}">
+                                        <a type="submit" id="asset_{{forloop.counter}}" class="">
+                                            <i class="fas fa-list-ul" style="font-size:0.8em"></i>
+                                        </a>
+                                    </form>
                                 </td>
                                 <td>
                                     <span style="float:right;font-weight:600">{{d.4|intcomma}}</span>
