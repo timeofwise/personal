@@ -24,7 +24,7 @@ def home(request):
         inputStartDate = startDate
         endDate = (datetime.datetime.strptime(request.POST['endDate'], '%Y-%m-%d') + timedelta(days=1)).strftime("%Y-%m-%d")
         endDateForList = request.POST['endDate']
-        AssetBeforeStartDate = (datetime.datetime.strptime(request.POST['endDate'], '%Y-%m-%d') - timedelta(days=1)).strftime(
+        AssetBeforeStartDate = (datetime.datetime.strptime(request.POST['startDate'], '%Y-%m-%d') - timedelta(days=1)).strftime(
             "%Y-%m-%d")
         inputEndDate = endDateForList
         #date_list = pd.date_range(start=startDate, end=endDateForList)
