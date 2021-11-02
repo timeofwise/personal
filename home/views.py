@@ -160,7 +160,6 @@ class addAsset(CreateView):
     fields = [
         'asset_account',
         'current_amount',
-        'created',
     ]
     success_url = reverse_lazy('home:add-asset')
     template_name_suffix = '_create'
