@@ -24,7 +24,12 @@
                         </div>
                     </div>
                     <div class="col-3">
-                        <input class="btn btn-primary" type="submit" value="검색">
+                        <button id="dateSearch" class="btn btn-primary" type="submit">
+                            <span id="dateSearchText">검색</span>
+                            <div id="dateSearchIndicator" class="spinner-border spinner-border-sm text-light d-none" role="status">
+                                <span class="visually-hidden">Loading...</span>
+                            </div>
+                        </button>
                     </div>
                 </div>
                 {% if startDate != 'None' %}
@@ -256,6 +261,16 @@ $(document).ready(function(){
             $("#indiIncomeRate_{{forloop.counter}}").addClass("text-primary");
         }
     {% endfor %}
+});
+var dateSearchBool = false;
+$(document).ready(function(){
+    $('#dateSearch').click(function(){
+        dateSearchBool = true;
+    });
+    if(dateSearchBool) {
+        $("#dateSearch").addClass('d-none);
+        $("#dateSearchIndicator").removeClass('d-none);
+    }
 });
 </script>
 {% endblock %}
