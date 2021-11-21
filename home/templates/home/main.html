@@ -129,68 +129,70 @@
         <div class="col-12">
             <div class="row">
                 {% for d in data %}
-                    <div class="col-sm-4 col-6 my-3 bg-secondary">
-                        <div class="card mb-3" style="max-width: 540px;">
-                            <div class="row g-0">
-                                <div class="col-md-3">
-                                    <img src="{{d.0.account_img.url}}" class="img-fluid rounded" alt="...">
-                                </div>
-                                <div class="col-md-9">
-                                    <div class="card-body">
-                                        <h5 class="card-title">{{d.0.account_name}}</h5>
-                                        <p class="card-text">{{d.0.description}}</p>
+                    <div class="col-sm-4 col-6 my-3">
+                        <div class="mx-1 bg-secondary">
+                            <div class="card mb-3" style="max-width: 540px;">
+                                <div class="row g-0">
+                                    <div class="col-md-3">
+                                        <img src="{{d.0.account_img.url}}" class="img-fluid rounded" alt="...">
+                                    </div>
+                                    <div class="col-md-9">
+                                        <div class="card-body">
+                                            <h5 class="card-title">{{d.0.account_name}}</h5>
+                                            <p class="card-text">{{d.0.description}}</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
+                            <table class="table table-sm">
+                                <tr>
+                                    <td>
+                                        <span style="font-size:0.8em">원금</span>
+                                        <a href="#" id="data_{{forloop.counter}}" class="" data-bs-toggle="modal" data-bs-target="#exampleModal_{{forloop.counter}}">
+                                            <i class="fas fa-search-plus" style="font-size:0.8em"></i>
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <span style="float:right;font-weight:600">{{d.2|intcomma}}</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span style="font-size:0.8em">자산</span>
+                                        <form class="mx-0 my-0 px-0 py-0" style="display:inline!important" action="{% url 'home:detail-asset' id=d.0.id %}" autocomplete="off" method="POST">
+                                            {% csrf_token %}
+                                            <input class="d-none" name="startDate" value="{{startDate}}">
+                                            <input class="d-none" name="endDate" value="{{endDateForList}}">
+                                            <button type="submit" id="asset_{{forloop.counter}}" class="px-0 py-0 mx-0 py-0 btn btn-sm text-primary bg-none">
+                                                <i class="fas fa-list-ul" style="font-size:0.8em"></i>
+                                            </button>
+                                        </form>
+                                    </td>
+                                    <td>
+                                        <span style="float:right;font-weight:600">{{d.4|intcomma}}</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td rowspan="2">
+                                        <span style="font-size:0.8em">손익</span>
+                                    </td>
+                                    <td>
+                                        <span id="indiIncome_{{forloop.counter}}" style="float:right;font-weight:600">{{d.4|sub:d.2|intcomma}}</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span id="indiIncomeRate_{{forloop.counter}}" style="float:right;font-weight:600">
+                                            {% if d.2 != 0 %}
+                                                {{d.4|sub:d.2|div:d.2|mul:100|floatformat:2}}<span style="font-size:0.75em">&nbsp;%</span>
+                                            {% else %}
+                                                -<span style="font-size:0.75em">&nbsp;%</span>
+                                            {% endif %}
+                                        </span>
+                                    </td>
+                                </tr>
+                            </table>
                         </div>
-                        <table class="table table-sm">
-                            <tr>
-                                <td>
-                                    <span style="font-size:0.8em">원금</span>
-                                    <a href="#" id="data_{{forloop.counter}}" class="" data-bs-toggle="modal" data-bs-target="#exampleModal_{{forloop.counter}}">
-                                        <i class="fas fa-search-plus" style="font-size:0.8em"></i>
-                                    </a>
-                                </td>
-                                <td>
-                                    <span style="float:right;font-weight:600">{{d.2|intcomma}}</span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <span style="font-size:0.8em">자산</span>
-                                    <form class="mx-0 my-0 px-0 py-0" style="display:inline!important" action="{% url 'home:detail-asset' id=d.0.id %}" autocomplete="off" method="POST">
-                                        {% csrf_token %}
-                                        <input class="d-none" name="startDate" value="{{startDate}}">
-                                        <input class="d-none" name="endDate" value="{{endDateForList}}">
-                                        <button type="submit" id="asset_{{forloop.counter}}" class="px-0 py-0 mx-0 py-0 btn btn-sm text-primary bg-none">
-                                            <i class="fas fa-list-ul" style="font-size:0.8em"></i>
-                                        </button>
-                                    </form>
-                                </td>
-                                <td>
-                                    <span style="float:right;font-weight:600">{{d.4|intcomma}}</span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td rowspan="2">
-                                    <span style="font-size:0.8em">손익</span>
-                                </td>
-                                <td>
-                                    <span id="indiIncome_{{forloop.counter}}" style="float:right;font-weight:600">{{d.4|sub:d.2|intcomma}}</span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <span id="indiIncomeRate_{{forloop.counter}}" style="float:right;font-weight:600">
-                                        {% if d.2 != 0 %}
-                                            {{d.4|sub:d.2|div:d.2|mul:100|floatformat:2}}<span style="font-size:0.75em">&nbsp;%</span>
-                                        {% else %}
-                                            -<span style="font-size:0.75em">&nbsp;%</span>
-                                        {% endif %}
-                                    </span>
-                                </td>
-                            </tr>
-                        </table>
                     </div>
                     <!-- Modal -->
                     <div class="modal fade" id="exampleModal_{{forloop.counter}}" tabindex="-1" aria-labelledby="exampleModalLabel_{{forloop.counter}}" aria-hidden="true">
