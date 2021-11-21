@@ -262,15 +262,11 @@ $(document).ready(function(){
         }
     {% endfor %}
 });
-var dateSearchBool = false;
 $(document).ready(function(){
     $('#dateSearch').click(function(){
-        dateSearchBool = true;
-    });
-    if(dateSearchBool) {
-        $("#dateSearch").addClass('d-none);
+        $("#dateSearchText").addClass('d-none);
         $("#dateSearchIndicator").removeClass('d-none);
-    }
+    });
 });
 </script>
 {% endblock %}
